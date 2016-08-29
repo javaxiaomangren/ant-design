@@ -54,7 +54,8 @@ export interface InputProps {
 export default class Input extends Component<InputProps, any> {
   static Group: any;
   static defaultProps = {
-    defaultValue: '',
+    // Comment out for it doesn't make sense when `type='number'` and so on.
+    // defaultValue: '',
     disabled: false,
     prefixCls: 'ant-input',
     type: 'text',
