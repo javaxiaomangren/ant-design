@@ -47,7 +47,7 @@ let Demo = React.createClass({
   },
 
   checkBirthday(rule, value, callback) {
-    if (value && value.getTime() >= Date.now()) {
+    if (value && value.valueOf() >= Date.now()) {
       callback(new Error("You can't be born in the future!"));
     } else {
       callback();
@@ -91,7 +91,7 @@ let Demo = React.createClass({
       rules: [
         {
           required: true,
-          type: 'date',
+          type: 'object',
           message: 'When is your birthday?',
         }, {
           validator: this.checkBirthday,
@@ -99,9 +99,12 @@ let Demo = React.createClass({
       ],
     });
     const timeProps = getFieldProps('time', {
-      getValueFromEvent: (value, timeString) => timeString,
       rules: [
-        { required: true, message: 'Please select the time' },
+        {
+          required: true,
+          type: 'object',
+          message: 'Please select the time',
+        },
       ],
     });
     const primeNumberProps = getFieldProps('primeNumber', {
